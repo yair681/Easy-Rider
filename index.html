@@ -4,347 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Easy Rider - פתרונות נסיעה מתקדמים</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Font - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        
-        /* Hero Section Animated Background */
-        .hero-gradient {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                         url('images/hero_scooter-01.jpg') center/cover no-repeat;
-            background-size: cover;
-            animation: gradientShift 15s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Floating Animation */
-        .floating {
-            animation: floating 6s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0% { transform: translate(0, 0px); }
-            50% { transform: translate(0, -20px); }
-            100% { transform: translate(0, -0px); }
-        }
-        
-        /* Pulsing Animation */
-        .pulse-glow {
-            animation: pulseGlow 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(255, 107, 107, 0.8), 0 0 60px rgba(255, 107, 107, 0.4); }
-        }
-        
-        /* Rainbow Text Animation */
-        .rainbow-text {
-            background: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 8s ease infinite;
-        }
-        
-        /* Card Hover Effects */
-        .service-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-        
-        /* Glowing Buttons */
-        .glow-button {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .glow-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: all 0.5s;
-        }
-        
-        .glow-button:hover::before {
-            left: 100%;
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border-radius: 10px;
-        }
-        
-        /* Text Readability Improvements */
-        .text-shadow-strong {
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(0, 0, 0, 0.5);
-        }
-        
-        .text-shadow-white {
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.5);
-        }
-        
-        .bg-text-contrast {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-            border-radius: 15px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Navigation with glassmorphism */
-        .nav-glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Testimonial Cards */
-        .testimonial-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transform: perspective(1000px) rotateX(5deg);
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-card:hover {
-            transform: perspective(1000px) rotateX(0deg) translateY(-5px);
-        }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero_scooter-01.jpg') center/cover no-repeat; }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
 
-    <!-- Header & Navigation -->
-    <header class="nav-glass sticky top-0 z-50">
-        <nav class="container mx-auto p-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold rainbow-text">Easy Rider</a>
-            <div class="hidden md:flex space-x-8 text-xl" style="direction: ltr;">
-                <a href="#about" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110 text-shadow-strong font-bold">אודות</a>
-                <a href="#services" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110 text-shadow-strong font-bold">שירותים</a>
-                <a href="#testimonials" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110 text-shadow-strong font-bold">המלצות</a>
-                <a href="#contact" class="text-white hover:text-yellow-300 transition duration-300 transform hover:scale-110 text-shadow-strong font-bold">יצירת קשר</a>
-            </div>
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-white text-2xl hover:text-yellow-300 transition duration-300" onclick="document.getElementById('mobile-menu').classList.toggle('hidden');">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden nav-glass p-4 text-xl">
-            <a href="#about" class="block p-2 text-white hover:bg-white/20 rounded-lg transition duration-300">אודות</a>
-            <a href="#services" class="block p-2 text-white hover:bg-white/20 rounded-lg transition duration-300">שירותים</a>
-            <a href="#testimonials" class="block p-2 text-white hover:bg-white/20 rounded-lg transition duration-300">המלצות</a>
-            <a href="#contact" class="block p-2 text-white hover:bg-white/20 rounded-lg transition duration-300">יצירת קשר</a>
+<header class="bg-white/10 backdrop-blur-md sticky top-0 z-50">
+    <nav class="container mx-auto p-4 flex justify-between items-center">
+        <a href="#" class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-pink-400 to-yellow-400 bg-clip-text text-transparent">Easy Rider</a>
+        <div class="hidden md:flex space-x-4 text-base sm:text-lg" style="direction: ltr;">
+            <a href="#about" class="text-white hover:text-yellow-300 font-bold">אודות</a>
+            <a href="#services" class="text-white hover:text-yellow-300 font-bold">שירותים</a>
+            <a href="#testimonials" class="text-white hover:text-yellow-300 font-bold">המלצות</a>
+            <a href="#contact" class="text-white hover:text-yellow-300 font-bold">יצירת קשר</a>
         </div>
-    </header>
+        <button class="md:hidden text-white text-xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden');">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden bg-white/10 p-4 text-lg space-y-2">
+        <a href="#about" class="block text-white">אודות</a>
+        <a href="#services" class="block text-white">שירותים</a>
+        <a href="#testimonials" class="block text-white">המלצות</a>
+        <a href="#contact" class="block text-white">יצירת קשר</a>
+    </div>
+</header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero-gradient text-center p-12 md:p-24 flex items-center justify-center min-h-[80vh] relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-10 left-10 w-20 h-20 bg-white rounded-full floating"></div>
-            <div class="absolute top-32 right-16 w-16 h-16 bg-yellow-300 rounded-full floating" style="animation-delay: -2s;"></div>
-            <div class="absolute bottom-20 left-20 w-12 h-12 bg-pink-300 rounded-full floating" style="animation-delay: -4s;"></div>
-            <div class="absolute bottom-32 right-32 w-24 h-24 bg-green-300 rounded-full floating" style="animation-delay: -1s;"></div>
-        </div>
-        
-        <div class="service-card p-8 rounded-3xl pulse-glow z-10 floating bg-text-contrast">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 rainbow-text text-shadow-strong">Easy Rider</h1>
-            <p class="text-2xl md:text-4xl mb-8 font-bold text-white text-shadow-strong">פתרונות נסיעה מתקדמים על שני גלגלים</p>
-            <a href="#contact" class="glow-button inline-block bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:from-pink-600 hover:via-red-600 hover:to-yellow-600 text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-110 text-xl">
-                צור קשר עכשיו ✨
-            </a>
-        </div>
-    </section>
+<section id="hero" class="hero-gradient text-center p-6 sm:p-12 md:p-20 flex items-center justify-center min-h-[70vh]">
+    <div class="bg-black/40 backdrop-blur-sm p-4 sm:p-8 rounded-xl">
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white mb-3">Easy Rider</h1>
+        <p class="text-lg sm:text-xl md:text-3xl text-white mb-6">פתרונות נסיעה מתקדמים על שני גלגלים</p>
+        <a href="#contact" class="inline-block bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg">צור קשר עכשיו ✨</a>
+    </div>
+</section>
 
-    <!-- About Us Section -->
-    <section id="about" class="container mx-auto p-8 md:p-12 my-12">
-        <div class="service-card rounded-3xl p-8">
-            <h2 class="text-4xl md:text-6xl font-bold text-center mb-10 rainbow-text">מי אנחנו</h2>
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-1/2 floating">
-                    <div class="relative">
-                        <img src="images/team_workshop-01.jpg" alt="צוות Easy Rider עובד במוסך קטנועים" class="rounded-3xl shadow-2xl w-full h-auto object-cover">
-                        <div class="absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full animate-ping"></div>
-                        <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-pink-400 rounded-full animate-ping" style="animation-delay: -1s;"></div>
-                    </div>
-                </div>
-                <div class="md:w-1/2 text-lg leading-relaxed">
-                    <p class="mb-6 p-6 bg-white/90 rounded-2xl backdrop-blur-sm border border-white/20 text-gray-800 font-medium shadow-lg">
-                        איזי ריידר הוקמה במטרה לספק פתרונות נסיעה יעילים, בטוחים ומהנים. אנו מאמינים כי התניידות בעיר יכולה להיות פשוטה ומהירה, בלי לוותר על איכות ושירות. עם שנים של ניסיון בתחום, אנו מציעים מגוון רחב של קטנועים ואביזרים נלווים, יחד עם שירותי תחזוקה ותיקונים מקצועיים.
-                    </p>
-                    <p class="p-6 bg-white/90 rounded-2xl backdrop-blur-sm border border-white/20 text-gray-800 font-medium shadow-lg">
-                        הצוות שלנו מורכב מאנשי מקצוע שאוהבים ומבינים את התחום, ותמיד מוכן לעמוד לשירותכם ולסייע לכם למצוא את הפתרון המושלם עבורכם.
-                    </p>
-                </div>
+<section id="about" class="container mx-auto p-4 sm:p-8 my-8">
+    <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 sm:p-8">
+        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-6 text-pink-300">מי אנחנו</h2>
+        <div class="flex flex-col md:flex-row items-center gap-6">
+            <div class="md:w-1/2">
+                <img src="images/team_workshop-01.jpg" alt="צוות Easy Rider" class="rounded-xl w-full max-w-full h-auto object-cover">
+            </div>
+            <div class="md:w-1/2 text-sm sm:text-base text-white space-y-4">
+                <p class="bg-white/90 text-gray-800 p-3 rounded-xl">איזי ריידר הוקמה במטרה לספק פתרונות נסיעה יעילים, בטוחים ומהנים...</p>
+                <p class="bg-white/90 text-gray-800 p-3 rounded-xl">הצוות שלנו מורכב מאנשי מקצוע שאוהבים את התחום...</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Services Section -->
-    <section id="services" class="container mx-auto p-8 md:p-12 my-12">
-        <h2 class="text-4xl md:text-6xl font-bold text-center mb-10 rainbow-text">השירותים שלנו</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <!-- Service Card 1 -->
-            <div class="service-card p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:scale-105 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/scooters_showroom-01.jpg')">
-                <div class="mb-6">
-                    <i class="fas fa-motorcycle text-pink-400 text-6xl mb-4 animate-bounce"></i>
-                </div>
-                <h3 class="text-3xl font-bold mb-4 text-pink-400 text-shadow-strong">מכירת קטנועים חדשים</h3>
-                <p class="text-gray-800 text-lg leading-relaxed font-medium bg-white/80 p-4 rounded-xl">מגוון רחב של דגמים מהיצרנים המובילים בעולם, עם אחריות מלאה ושירות אישי מותאם לכל צורך.</p>
-                <div class="mt-4 flex justify-center space-x-2">
-                    <div class="w-3 h-3 bg-pink-400 rounded-full animate-ping"></div>
-                    <div class="w-3 h-3 bg-purple-400 rounded-full animate-ping" style="animation-delay: -0.5s;"></div>
-                    <div class="w-3 h-3 bg-blue-400 rounded-full animate-ping" style="animation-delay: -1s;"></div>
-                </div>
-            </div>
-            
-            <!-- Service Card 2 -->
-            <div class="service-card p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:scale-105 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/garage_repair-01.jpg')">
-                <div class="mb-6">
-                    <i class="fas fa-tools text-cyan-400 text-6xl mb-4 animate-pulse"></i>
-                </div>
-                <h3 class="text-3xl font-bold mb-4 text-cyan-400 text-shadow-strong">מוסך ותיקונים</h3>
-                <p class="text-gray-800 text-lg leading-relaxed font-medium bg-white/80 p-4 rounded-xl">שירותי תחזוקה ותיקונים לכל סוגי הקטנועים, באמצעות צוות מומחה וחלקים מקוריים בלבד.</p>
-                <div class="mt-4 flex justify-center space-x-2">
-                    <div class="w-3 h-3 bg-cyan-400 rounded-full animate-ping"></div>
-                    <div class="w-3 h-3 bg-teal-400 rounded-full animate-ping" style="animation-delay: -0.5s;"></div>
-                    <div class="w-3 h-3 bg-green-400 rounded-full animate-ping" style="animation-delay: -1s;"></div>
-                </div>
-            </div>
-            
-            <!-- Service Card 3 -->
-            <div class="service-card p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:scale-105 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/riding_gear-01.jpg')">
-                <div class="mb-6">
-                    <i class="fas fa-helmet-safety text-orange-400 text-6xl mb-4 animate-spin" style="animation-duration: 3s;"></i>
-                </div>
-                <h3 class="text-3xl font-bold mb-4 text-orange-400 text-shadow-strong">אביזרים וציוד</h3>
-                <p class="text-gray-800 text-lg leading-relaxed font-medium bg-white/80 p-4 rounded-xl">כל מה שצריך כדי לרכב בבטחה ובסטייל: קסדות, כפפות, מעילים ועוד אביזרים איכותיים.</p>
-                <div class="mt-4 flex justify-center space-x-2">
-                    <div class="w-3 h-3 bg-orange-400 rounded-full animate-ping"></div>
-                    <div class="w-3 h-3 bg-yellow-400 rounded-full animate-ping" style="animation-delay: -0.5s;"></div>
-                    <div class="w-3 h-3 bg-red-400 rounded-full animate-ping" style="animation-delay: -1s;"></div>
-                </div>
-            </div>
+<section id="services" class="container mx-auto p-4 sm:p-8 my-8">
+    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-6 text-pink-300">השירותים שלנו</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl text-center">
+            <i class="fas fa-motorcycle text-4xl sm:text-5xl text-pink-400 mb-4"></i>
+            <h3 class="text-lg sm:text-xl font-bold text-pink-400 mb-2">מכירת קטנועים</h3>
+            <p class="text-sm sm:text-base text-white">מגוון רחב של דגמים מהיצרנים המובילים בעולם...</p>
         </div>
-    </section>
+        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl text-center">
+            <i class="fas fa-tools text-4xl sm:text-5xl text-cyan-400 mb-4"></i>
+            <h3 class="text-lg sm:text-xl font-bold text-cyan-400 mb-2">מוסך ותיקונים</h3>
+            <p class="text-sm sm:text-base text-white">שירותי תחזוקה ותיקונים לכל סוגי הקטנועים...</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl text-center">
+            <i class="fas fa-helmet-safety text-4xl sm:text-5xl text-orange-400 mb-4"></i>
+            <h3 class="text-lg sm:text-xl font-bold text-orange-400 mb-2">אביזרים וציוד</h3>
+            <p class="text-sm sm:text-base text-white">כל מה שצריך כדי לרכב בבטחה ובסטייל...</p>
+        </div>
+    </div>
+</section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="container mx-auto p-8 md:p-12 my-12">
-        <h2 class="text-4xl md:text-6xl font-bold text-center mb-10 rainbow-text">מה הלקוחות שלנו אומרים</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card p-8 rounded-3xl shadow-2xl text-white">
-                <div class="mb-4">
-                    <div class="flex mb-4">
-                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
-                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
-                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
-                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
-                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
-                    </div>
-                    <p class="italic mb-4 text-xl leading-relaxed">"שירות יוצא דופן! קניתי קטנוע חדש, והצוות ליווה אותי לכל אורך התהליך בסבלנות ומקצועיות. אני ממליץ בחום!"</p>
-                </div>
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full flex items-center justify-center text-white font-bold text-lg ml-4">י</div>
-                    <p class="font-bold text-yellow-300 text-xl">יואב כהן</p>
-                </div>
-            </div>
-            
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card p-8 rounded-3xl shadow-2xl text-white">
-                <div class="mb-4">
-                    <div class="flex mb-4">
-                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
-                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
-                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
-                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
-                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
-                    </div>
-                    <p class="italic mb-4 text-xl leading-relaxed">"המוסך הכי טוב שנתקלתי בו! הקטנוע שלי חזר כמו חדש, והכל במחיר הוגן ושקוף. תודה רבה לצוות."</p>
-                </div>
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-green-400 rounded-full flex items-center justify-center text-white font-bold text-lg ml-4">נ</div>
-                    <p class="font-bold text-yellow-300 text-xl">נועה לוי</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="contact" class="container mx-auto p-4 sm:p-8 my-8">
+    <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 sm:p-8">
+        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-6 text-pink-300">יצירת קשר</h2>
+        <form class="space-y-4 max-w-lg mx-auto">
+            <input type="text" placeholder="שם מלא" class="w-full p-3 rounded-xl">
+            <input type="email" placeholder="אימייל" class="w-full p-3 rounded-xl">
+            <textarea rows="4" placeholder="הודעה" class="w-full p-3 rounded-xl"></textarea>
+            <button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-full w-full">שלח הודעה 🚀</button>
+        </form>
+    </div>
+</section>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="container mx-auto p-8 md:p-12 my-12">
-        <div class="service-card rounded-3xl p-8">
-            <h2 class="text-4xl md:text-6xl font-bold text-center mb-10 rainbow-text">יצירת קשר</h2>
-            <form class="max-w-lg mx-auto space-y-6">
-                <div>
-                    <label for="name" class="block text-xl font-bold text-white mb-2 text-shadow-strong">שם מלא</label>
-                    <input type="text" id="name" name="name" class="w-full p-4 bg-white/95 border-2 border-white/50 rounded-2xl focus:ring-4 focus:ring-pink-500 focus:border-pink-500 transition duration-300 text-gray-800 placeholder-gray-500 backdrop-blur-sm font-medium" placeholder="השם שלך">
-                </div>
-                <div>
-                    <label for="email" class="block text-xl font-bold text-white mb-2 text-shadow-strong">אימייל</label>
-                    <input type="email" id="email" name="email" class="w-full p-4 bg-white/95 border-2 border-white/50 rounded-2xl focus:ring-4 focus:ring-blue-500 focus:border-blue-500 transition duration-300 text-gray-800 placeholder-gray-500 backdrop-blur-sm font-medium" placeholder="your.email@example.com">
-                </div>
-                <div>
-                    <label for="message" class="block text-xl font-bold text-white mb-2 text-shadow-strong">הודעה</label>
-                    <textarea id="message" name="message" rows="5" class="w-full p-4 bg-white/95 border-2 border-white/50 rounded-2xl focus:ring-4 focus:ring-green-500 focus:border-green-500 transition duration-300 text-gray-800 placeholder-gray-500 backdrop-blur-sm resize-none font-medium" placeholder="כתוב כאן את הודעתך..."></textarea>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="glow-button w-full md:w-auto bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white font-bold py-4 px-12 rounded-full transition duration-300 transform hover:scale-105 shadow-xl text-xl">
-                        שלח הודעה 🚀
-                    </button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 text-white p-8 text-center relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-1/4 w-32 h-32 bg-pink-500 rounded-full animate-pulse"></div>
-            <div class="absolute bottom-0 right-1/4 w-24 h-24 bg-yellow-500 rounded-full animate-pulse" style="animation-delay: -1s;"></div>
-        </div>
-        <p class="relative z-10 text-xl font-semibold">&copy; 2024 Easy Rider. כל הזכויות שמורות. ✨</p>
-        <div class="mt-4 flex justify-center space-x-6">
-            <i class="fab fa-facebook text-2xl text-blue-400 hover:text-blue-300 cursor-pointer transition duration-300 transform hover:scale-125"></i>
-            <i class="fab fa-instagram text-2xl text-pink-400 hover:text-pink-300 cursor-pointer transition duration-300 transform hover:scale-125"></i>
-            <i class="fab fa-whatsapp text-2xl text-green-400 hover:text-green-300 cursor-pointer transition duration-300 transform hover:scale-125"></i>
-        </div>
-    </footer>
+<footer class="bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 text-white p-6 text-center">
+    <p>&copy; 2024 Easy Rider. כל הזכויות שמורות.</p>
+</footer>
 
 </body>
 </html>
